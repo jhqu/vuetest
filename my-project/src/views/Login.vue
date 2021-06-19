@@ -1,14 +1,14 @@
 <template>
 <el-container class="loginCount">
   <el-card class="box-card">
-   <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-  <el-form-item label="密码" prop="pass">
-    <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+   <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"  class="demo-ruleForm">
+  <el-form-item label="用户名" prop="User">
+    <el-input type='text' v-model="ruleForm.User" autocomplete="off"></el-input>
   </el-form-item>
-  <el-form-item label="确认密码" prop="checkPass">
-    <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+  <el-form-item label="密码" prop="passWord">
+    <el-input type="password" v-model="ruleForm.passWord" autocomplete="off"></el-input>
   </el-form-item>
-  <el-form-item>
+  <el-form-item class="loginbutton">
     <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
     <el-button @click="resetForm('ruleForm')">重置</el-button>
   </el-form-item>
@@ -37,34 +37,30 @@
       };
       var validatePass = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请输入密码'));
+          callback(new Error('请输用户名'));
         } else {
-          if (this.ruleForm.checkPass !== '') {
-            this.$refs.ruleForm.validateField('checkPass');
-          }
+        
           callback();
         }
       };
       var validatePass2 = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.ruleForm.pass) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
+          callback(new Error('请输入密码'));
+        }  else {
           callback();
         }
       };
       return {
         ruleForm: {
-          pass: '',
-          checkPass: '',
+          User: '',
+          passWord: '',
           age: ''
         },
         rules: {
-          pass: [
+          User: [
             { validator: validatePass, trigger: 'blur' }
           ],
-          checkPass: [
+          passWord: [
             { validator: validatePass2, trigger: 'blur' }
           ],
           age: [
@@ -75,9 +71,13 @@
     },
     methods: {
       submitForm(formName) {
+        
         this.$refs[formName].validate((valid) => {
+          console.log(valid)
           if (valid) {
-            alert('submit!');
+            this.$router.push('/main');
+            //alert('submit!');
+            
           } else {
             console.log('error submit!!');
             return false;
@@ -92,7 +92,13 @@
 </script>
 <style scoped>
 .demo-ruleForm{
+  margin-top: 60px;
+  margin-left: -20px;
+ 
   
+}
+.loginbutton{
+margin-top: 90px;
 }
  .loginCount{
   
@@ -114,6 +120,8 @@
     width: 400px;
     height: 350px;
     background: #fff;
+    padding: 30px 10px 10px 10px;
+    
     
 
  }
