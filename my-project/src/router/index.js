@@ -1,7 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Login from '../views/Login.vue'
-import Main from '../views/main'
+import Login from '../views/Login.vue';
+import Main from '../views/main';
+import User from '../views/user';
+import Menu from '../views/menu'
+import Personl from '../views/personl'
 
 
 Vue.use(VueRouter);
@@ -15,7 +18,36 @@ const routes = [
   {
     path: "/main",
     name: "Main",
-    component: Main
+    component: Main,
+    children:[
+      {
+        path: "",
+        name: "人员管理",
+        children:[
+         {
+          path: "/user",
+          name: "人员管理",
+          component: User,
+         },
+         {
+          path: "/personl",
+          name: "用户管理",
+          component: Personl,
+         }
+        ]
+        },
+      {
+        path: "",
+        name: "产品管理",
+        children:[
+          {
+          path: "/menu",
+          name: "菜单管理",
+          component: Menu,
+          }
+        ]
+      },
+    ]
   },
   {
     path: "/about",

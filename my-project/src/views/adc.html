@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <div>
+        <input id="doneTime" value="2021-06-2100:00:00.0" name="doneTime"  class="form-control"  type="datetime-local">
+
+    </div>
+    <script>
+      var aa = document.getElementById("doneTime").value
+     var newaa = insertStr(aa,10,"T");
+      alert(newaa)
+      function insertStr(soure, start, newStr){   
+   return soure.slice(0, start) + newStr + soure.slice(start);
+}
+    </script>
+</body>
