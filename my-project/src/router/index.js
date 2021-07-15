@@ -20,63 +20,32 @@ const routes = [
     name: "Main",
     component: Main,
     children:[
+   
       {
         path: "/user",
-<<<<<<< HEAD
-        name: "人员管理",
-        component: User,
-       },
-      {
-        
-        path: "",
-        name: "人员管理",
-        children:[
-        
-         {
-          path: "/personl",
+         name: "用户管理",
+         component: User,
+        },
+       {
+         path: "/personl",
           name: "用户管理",
           component: Personl,
          }
         ]
-        },
-      {
-        path: "",
-        name: "产品管理",
-        children:[
-          {
-          path: "/menu",
-          name: "菜单管理",
-          component: Menu,
-          }
-        ]
-      },
-    ]
-=======
-        name: "员工管理",
-        component: User,
-       },
-       {
-        path: "/personl",
-        name: "用户管理",
-        component: Personl,
-       },
-      ]
   },
+  
+  
   {
     path: "/mian2",
     name: "导航2",
     component: Main,
     children:[
-    
-       {
+    {
         path: "/menu",
         name: "菜单管理",
         component: Menu,
         }
-    
-    
- ]
->>>>>>> 48423dd2b0dbaa9d58e03159deae769723eeadb0
+    ]
   },
   {
     path: "/about",
