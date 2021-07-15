@@ -68,7 +68,7 @@ export default {
                   return item;
                  }
        })
-       console.log(this.routers)
+       
     },
     methods:{
         getId:function(length){
