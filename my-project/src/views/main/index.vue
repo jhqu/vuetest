@@ -11,7 +11,12 @@
         :index="'1-'+key+1">
           <template slot="title">{{item.name}}</template>
           <el-menu-item v-for="(item1,key1) in item.children" :key="key1" 
-          :index="'1-'+key+1+'-'+key1+1">{{item1.name}}
+          :index="'1-'+key+1+'-'+key1+1">
+
+        <router-link tag="li" :to="{path:'/user'}">
+        {{item1.name}}
+
+        </router-link>
           </el-menu-item>
           
         </el-submenu>
@@ -39,14 +44,8 @@
     </el-header>
     
     <el-main>
-      <el-table :data="tableData">
-        <el-table-column prop="date" label="日期" width="140">
-        </el-table-column>
-        <el-table-column prop="name" label="姓名" width="120">
-        </el-table-column>
-        <el-table-column prop="address" label="地址">
-        </el-table-column>
-      </el-table>
+     
+      <router-view></router-view>
     </el-main>
   </el-container>
 </el-container>

@@ -21,14 +21,16 @@ const routes = [
     component: Main,
     children:[
       {
+        path: "/user",
+        name: "人员管理",
+        component: User,
+       },
+      {
+        
         path: "",
         name: "人员管理",
         children:[
-         {
-          path: "/user",
-          name: "人员管理",
-          component: User,
-         },
+        
          {
           path: "/personl",
           name: "用户管理",
