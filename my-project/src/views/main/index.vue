@@ -1,31 +1,25 @@
 <template>
   <el-container style="height:100%; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-    <el-menu :default-openeds="['1', '3']">
-      <el-submenu index="1">
-       
-        <template slot="title"><i class="el-icon-menu"></i>导航一</template>
-        
-      
-        <el-submenu v-for="(item,key) in $router.options.routes[1].children" :key="key"  
-        :index="'1-'+key+1">
-          <template slot="title">{{item.name}}</template>
-          <el-menu-item v-for="(item1,key1) in item.children" :key="key1" 
-          :index="'1-'+key+1+'-'+key1+1">
-
-        <router-link tag="li" :to="{path:'/user'}">
-        {{item1.name}}
-
-        </router-link>
-          </el-menu-item>
-          
+    <el-menu :default-openeds="['1', '3']" >
+    
+       <el-submenu  v-for="(item,index) in routers" :index='(index+1).toString()' :key="index">
+          <template slot="title">{{item.name}}{{index}}</template>
+          <el-menu-item v-for="(item2,index2) in item.children" :key="index2" 
+          :index="(index+1).toString()+'-'+(index2+1).toString()">
+            <!-- <router-link :to="item2.path">{{item2.name}}</router-link>  -->
+            {{item2.name}}
+            </el-menu-item>
+           
         </el-submenu>
-          <!-- <el-submenu index="1-2">
+
+
+          <!-- <el-submenu index="1">
           <template slot="title">产品管理</template>
-          <el-menu-item index="1-2-1">菜单管理</el-menu-item>
+          <el-menu-item index="1-1">菜单管理</el-menu-item>
            <el-menu-item index="1-2-2">订单管理</el-menu-item>
-        </el-submenu> -->
-      </el-submenu>
+        </el-submenu>
+     -->
    
     </el-menu>
   </el-aside>
@@ -45,7 +39,9 @@
     
     <el-main>
      
+
       <router-view></router-view>
+
     </el-main>
   </el-container>
 </el-container>
@@ -59,12 +55,20 @@ export default {
         address: '上海市普陀区金沙江路 1518 弄'
       };
       return {
-        tableData: Array(20).fill(item)
+        tableData: Array(20).fill(item),
+        routers:[]
       }
     },
     created(){
        
-       console.log ('dfd' + this.routers)
+       console.log ('dfd' + this.$router.options)
+       this.routers = this.$router.options.routes.filter((item,index)=>{
+                 if(index==1||index==2)
+                 {
+                  return item;
+                 }
+       })
+       console.log(this.routers)
     },
     methods:{
         getId:function(length){

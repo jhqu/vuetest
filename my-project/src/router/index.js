@@ -22,6 +22,7 @@ const routes = [
     children:[
       {
         path: "/user",
+<<<<<<< HEAD
         name: "人员管理",
         component: User,
        },
@@ -50,6 +51,32 @@ const routes = [
         ]
       },
     ]
+=======
+        name: "员工管理",
+        component: User,
+       },
+       {
+        path: "/personl",
+        name: "用户管理",
+        component: Personl,
+       },
+      ]
+  },
+  {
+    path: "/mian2",
+    name: "导航2",
+    component: Main,
+    children:[
+    
+       {
+        path: "/menu",
+        name: "菜单管理",
+        component: Menu,
+        }
+    
+    
+ ]
+>>>>>>> 48423dd2b0dbaa9d58e03159deae769723eeadb0
   },
   {
     path: "/about",
@@ -70,7 +97,7 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;
