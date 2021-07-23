@@ -17,6 +17,7 @@
 </el-container>
 </template>
 <script>
+
   export default {
     data() {
       var checkAge = (rule, value, callback) => {
@@ -72,10 +73,21 @@
     methods: {
       submitForm(formName) {
         
+
+    
         this.$refs[formName].validate((valid) => {
           console.log(valid)
           if (valid) {
-            this.$router.push('/main');
+             this.$axios.post('/Api/getTangPoetry', {
+                    page: 1,
+                    count:20
+                }).then(res=>{
+                  if(res.data.code==200){
+                    this.$router.push('/main');
+                  }
+                  console.log(res);
+                })
+           // this.$router.push('/main');
             //alert('submit!');
             
           } else {

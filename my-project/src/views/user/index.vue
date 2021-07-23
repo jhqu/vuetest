@@ -1,7 +1,9 @@
 <template>
+<el-main>
+<el-container>
   <el-table
     :data="tableData"
-    style="width: 100%">
+    style="width: 100%;" border>
     <el-table-column
       label="姓名"
       width="180">
@@ -35,6 +37,18 @@
       </template>
     </el-table-column>
   </el-table>
+<el-footer style=" margin-top: 20px;" >
+ 
+  <el-pagination
+  background
+  layout="prev, pager, next"
+  :total="1000"
+   @current-change="pageChange">
+</el-pagination>
+</el-footer>
+
+</el-container>
+</el-main>
 </template>
 
 <script>
@@ -63,7 +77,15 @@
       },
       handleDelete(index, row) {
         console.log(index, row);
+      },
+      pageChange(event){
+        console.log(event);
       }
     }
   }
 </script>
+<style>
+div{
+ 
+}
+</style>

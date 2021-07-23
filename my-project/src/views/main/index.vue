@@ -1,25 +1,14 @@
 <template>
   <el-container style="height:100%; border: 1px solid #eee">
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-<<<<<<< HEAD
     <el-menu router :default-openeds="['1','2']" >
-    
-       <el-submenu  v-for="(item,index) in routers" :index='(index+1).toString()' :key="index">
-          <template slot="title">{{item.name}}{{index}}</template>
-          <el-menu-item v-for="(item2,index2) in item.children" :key="index2" 
-          :index="item2.path"
-          :class=" $route.path == item2.path?'is-active':''">
-=======
-    <el-menu router :default-openeds="['1', '3']" >
     
        <el-submenu  v-for="(item,index) in routers" :index='(index+1).toString()' :key="index">
           <template slot="title">{{item.name}}{{index}}</template>
           <el-menu-item v-for="(item2,index2) in item.children" 
           :key="index2" 
           :index="item2.path"
-          :class="$route.path == item2.path?'is-active' :' '"
-          >
->>>>>>> f86e1d88cb2a9fbe2395971736876593af35c571
+          :class=" $route.path == item2.path?'is-active':''">
             <!-- <router-link :to="item2.path">{{item2.name}}</router-link>  -->
             {{item2.name}}
            
