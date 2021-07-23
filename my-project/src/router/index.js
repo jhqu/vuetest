@@ -19,7 +19,11 @@ const routes = [
     path: "/main",
     name: "Main",
     component: Main,
+<<<<<<< HEAD
     redirect:'/user',
+=======
+    redirect:('/user'),
+>>>>>>> f86e1d88cb2a9fbe2395971736876593af35c571
     children:[
    
       {
